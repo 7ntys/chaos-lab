@@ -137,6 +137,13 @@ Tickets are stored in `.chaos-tickets/`.
 | CH-007 | hard       | network | DNS blackhole via iptables |
 | CH-008 | hard       | kernel  | Reduce TCP backlog sysctls |
 | CH-009 | hard       | kernel  | Add netem latency/loss on `docker0` |
+| CH-010 | medium     | app     | Break backend DB DSN in compose config |
+| CH-011 | hard       | db      | Hold ACCESS EXCLUSIVE lock on `menu_items` |
+| CH-012 | medium     | lb      | Add strict Nginx API rate limit |
+| CH-013 | hard       | network | Random packet loss to backend on port 8080 |
+| CH-014 | medium     | os      | I/O saturation loops on `/var/tmp` |
+| CH-015 | hard       | os      | Lower backend `nofile` limit to 64 |
+| CH-016 | hard       | kernel  | CPU cgroup throttling on backend container |
 
 ## Security and Secrets
 

@@ -25,3 +25,4 @@ It also prints a user-facing incident ticket based on `tickets/CH-xxx.txt`.
 - Scenarios are designed to be reversible with `make chaos-heal`.
 - Tickets are stored in `.chaos-tickets/` to track and heal the last injected scenario.
 - User ticket templates are stored in `chaos/tickets/`.
+- Internet-facing safeguards: scenarios avoid direct firewall/INPUT changes on host TCP 22 and TCP 80.
