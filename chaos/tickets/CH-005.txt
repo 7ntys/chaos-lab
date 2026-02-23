@@ -1,0 +1,14 @@
+Bonjour equipe SRE,
+
+Les equipes produit signalent des echecs aleatoires et des erreurs d'ecriture
+sur le service cafe, surtout pendant les mises a jour de contenu.
+
+Impact:
+- operations internes en echec
+- risque d'indisponibilite si la situation continue
+
+Contexte:
+- debut observe: 09h40
+- priorite: P2
+
+Merci de verifier la sante du systeme et de retablir la capacite.

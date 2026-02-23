@@ -1,0 +1,116 @@
+:root {
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  color: #21140f;
+  background: radial-gradient(circle at top, #ffe9d2 0%, #f0d0ad 45%, #d8b28b 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.kicker {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+}
+
+.hero p {
+  max-width: 780px;
+  margin: 0.7rem auto 0;
+}
+
+.panel {
+  background: rgba(255, 253, 249, 0.84);
+  border: 1px solid rgba(120, 74, 43, 0.24);
+  border-radius: 16px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  backdrop-filter: blur(3px);
+}
+
+.special-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.8rem;
+}
+
+.card {
+  background: #fffaf1;
+  border: 1px solid rgba(120, 74, 43, 0.2);
+  border-radius: 12px;
+  padding: 0.8rem;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.category-block {
+  margin-bottom: 1rem;
+}
+
+.category-block h3 {
+  text-transform: capitalize;
+  margin-bottom: 0.6rem;
+}
+
+.menu-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  background: #fffaf1;
+  border: 1px solid rgba(120, 74, 43, 0.2);
+  border-radius: 10px;
+  padding: 0.7rem;
+}
+
+.menu-item h4 {
+  margin: 0;
+}
+
+.menu-item p {
+  margin: 0.3rem 0 0;
+  opacity: 0.9;
+}
+
+.status {
+  text-align: center;
+  font-weight: 600;
+}
+
+.error {
+  color: #8f1d14;
+}
+
+@media (max-width: 640px) {
+  .menu-item {
+    flex-direction: column;
+  }
+}

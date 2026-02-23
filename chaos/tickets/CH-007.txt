@@ -1,0 +1,14 @@
+Bonjour equipe SRE,
+
+Nous avons des erreurs aleatoires sur certaines dependances externes du service.
+Le site n'est pas totalement down, mais plusieurs appels echouent sans pattern clair.
+
+Impact:
+- erreurs intermittentes difficiles a reproduire
+- instabilite ressentie par les utilisateurs
+
+Contexte:
+- debut observe: 09h30
+- priorite: P1
+
+Merci d'analyser la resolution des services et de stabiliser la plateforme.

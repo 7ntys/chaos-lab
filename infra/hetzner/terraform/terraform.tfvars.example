@@ -1,0 +1,11 @@
+hcloud_token = "REPLACE_WITH_HETZNER_TOKEN"
+
+# Optional overrides
+# server_name         = "chaos-cx23"
+# server_type         = "cx23"
+# server_image        = "ubuntu-24.04"
+# server_location     = "nbg1"
+# ssh_public_key_path = "~/.ssh/id_rsa.pub"
+# ssh_key_name        = "local-id-rsa"
+# ssh_source_cidr     = "0.0.0.0/0"
+# http_source_cidr    = "0.0.0.0/0"

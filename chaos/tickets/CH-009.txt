@@ -1,0 +1,14 @@
+Bonjour equipe SRE,
+
+Nous remarquons de gros delais sur l'application cafe entre 09h00 et 10h00,
+avec parfois des timeouts alors que les services semblent en ligne.
+
+Impact:
+- forte latence percue par les utilisateurs
+- erreurs transitoires et retries applicatifs
+
+Contexte:
+- debut observe: 09h00
+- priorite: P1
+
+Merci d'investiguer la couche reseau systeme et de retablir des temps normaux.

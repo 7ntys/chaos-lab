@@ -1,0 +1,14 @@
+Bonjour equipe SRE,
+
+Nous avons une hausse brutale de reponses 5xx sur le service catalogue.
+Les utilisateurs voient des erreurs au moment d'afficher les infos produits du cafe.
+
+Impact:
+- indisponibilite partielle du parcours de consultation
+- alerte active sur la fiabilite backend
+
+Contexte:
+- debut observe: 09h15
+- priorite: P1
+
+Merci de restaurer le service et de communiquer l'etat d'avancement.

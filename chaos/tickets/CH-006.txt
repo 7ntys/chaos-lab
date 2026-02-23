@@ -1,0 +1,14 @@
+Bonjour equipe SRE,
+
+Depuis le rush du matin, l'application cafe repond beaucoup plus lentement.
+Les clients indiquent des pages qui mettent plusieurs secondes a charger.
+
+Impact:
+- degradation globale des performances
+- experience utilisateur fortement degradee
+
+Contexte:
+- debut observe: 09h05
+- priorite: P2
+
+Merci de traiter en urgence et confirmer le retour des latences normales.

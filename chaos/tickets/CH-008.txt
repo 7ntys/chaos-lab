@@ -1,0 +1,14 @@
+Bonjour equipe SRE,
+
+Pendant les pics de trafic du matin, le cafe devient tres instable:
+temps d'attente longs, erreurs de connexion et saturation apparente.
+
+Impact:
+- indisponibilite partielle pendant charge elevee
+- risque business sur l'heure de pointe
+
+Contexte:
+- plage critique: 09h00-10h00
+- priorite: P1
+
+Merci de diagnostiquer le comportement systeme bas niveau et corriger durablement.

@@ -1,0 +1,14 @@
+Bonjour equipe SRE,
+
+Depuis ce matin, plusieurs clients nous signalent que la page d'accueil charge,
+mais le menu du cafe ne remonte plus et des erreurs apparaissent cote API.
+
+Impact:
+- parcours client degrade sur la consultation des produits
+- incident visible en production
+
+Contexte:
+- debut observe: entre 09h00 et 10h00
+- priorite: P2
+
+Merci de corriger rapidement et confirmer le retour a la normale.

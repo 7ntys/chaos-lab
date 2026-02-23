@@ -1,0 +1,14 @@
+Bonjour equipe SRE,
+
+Le site web du cafe semble en ligne, mais les sections dynamiques restent vides
+et certains endpoints retournent des erreurs passerelle.
+
+Impact:
+- front visible mais experience client non fonctionnelle
+- perte de confiance sur la disponibilite applicative
+
+Contexte:
+- debut observe: pic entre 09h00 et 10h00
+- priorite: P2
+
+Merci d'investiguer le point de routage et de retablir les flux.

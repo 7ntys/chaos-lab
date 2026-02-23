@@ -1,0 +1,23 @@
+.chaos-tickets/
+infra/oci/terraform/terraform.tfvars
+*.pem
+*.key
+*.p12
+*.pfx
+.env
+.env.*
+
+# Terraform artifacts
+**/.terraform/
+**/*.tfstate
+**/*.tfstate.*
+**/crash.log
+**/override.tf
+**/override.tf.json
+**/*_override.tf
+**/*_override.tf.json
+**/terraform.tfvars
+
+# Node artifacts
+**/node_modules/
+**/dist/

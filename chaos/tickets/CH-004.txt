@@ -1,0 +1,14 @@
+Bonjour equipe SRE,
+
+Nous constatons de fortes latences sur les pages du cafe puis des erreurs
+intermittentes lors des appels metier.
+
+Impact:
+- temps de reponse degrade
+- erreurs backend en hausse
+
+Contexte:
+- debut observe: 09h20
+- priorite: P1
+
+Merci d'identifier rapidement le blocage reseau potentiel et de corriger.
