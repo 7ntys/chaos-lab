@@ -1,0 +1,15 @@
+Bonjour equipe SRE,
+
+Suite a un changement de configuration ce matin, l'API du cafe renvoie
+des erreurs quasi immediates sur les pages menu et specials.
+
+Impact:
+- front accessible, mais contenu dynamique indisponible
+- taux de 5xx en hausse nette
+
+Contexte:
+- debut observe: 09h10
+- priorite: P1
+
+Merci de verifier un eventuel drift de configuration applicative.
+

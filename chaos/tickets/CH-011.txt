@@ -1,0 +1,16 @@
+Bonjour equipe SRE,
+
+Nous constatons une forte latence sur les endpoints catalogue du cafe.
+Le service ne tombe pas completement, mais certaines requetes dépassent
+largement les SLA et finissent en timeout.
+
+Impact:
+- clients bloques sur le chargement du menu
+- experience utilisateur degradee pendant les heures de pointe
+
+Contexte:
+- debut observe: 09h25
+- priorite: P1
+
+Merci d'analyser la couche base de donnees et les attentes SQL.
+

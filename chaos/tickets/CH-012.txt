@@ -1,0 +1,15 @@
+Bonjour equipe SRE,
+
+Plusieurs utilisateurs (souvent derriere le meme reseau entreprise) remontent
+des erreurs intermittentes sur les appels API du site cafe, surtout en rafale.
+
+Impact:
+- comportement non deterministe: certaines requetes passent, d'autres echouent
+- hausse de tickets support liee a des erreurs temporaires
+
+Contexte:
+- debut observe: 09h35
+- priorite: P2
+
+Merci d'inspecter la couche load balancer et ses policies de protection.
+

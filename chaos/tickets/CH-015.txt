@@ -1,0 +1,15 @@
+Bonjour equipe SRE,
+
+L'API du cafe commence a echouer de maniere intermittente apres quelques minutes
+de trafic, avec suspicion de limite systeme atteinte cote process backend.
+
+Impact:
+- erreurs progressives sous charge
+- degradation difficile a detecter sans metriques systeme
+
+Contexte:
+- debut observe: 09h50
+- priorite: P1
+
+Merci de verifier les limites ressources Linux (fds/process) sur le service.
+

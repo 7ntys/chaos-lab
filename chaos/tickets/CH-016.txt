@@ -1,0 +1,15 @@
+Bonjour equipe SRE,
+
+Nous observons une latence importante sur l'API du cafe pendant les pics trafic,
+sans erreur applicative claire dans les logs metier.
+
+Impact:
+- reponses lentes et degradation de debit
+- saturation percue uniquement sur le backend
+
+Contexte:
+- plage critique: 09h00-10h00
+- priorite: P1
+
+Merci d'inspecter les limites runtime/kernel appliquees au conteneur backend.
+

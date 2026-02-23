@@ -1,0 +1,15 @@
+Bonjour equipe SRE,
+
+Depuis le rush du matin, l'application cafe repond lentement sans pic CPU evident.
+Les dashboards montrent surtout une saturation I/O et un load average eleve.
+
+Impact:
+- latence globale elevee
+- timeouts sporadiques sur certaines pages
+
+Contexte:
+- debut observe: 09h45
+- priorite: P2
+
+Merci de verifier les operations disque et la pression I/O de l'hote.
+

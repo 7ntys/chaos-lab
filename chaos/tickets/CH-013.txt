@@ -1,0 +1,15 @@
+Bonjour equipe SRE,
+
+Le front du cafe reste joignable, mais nous observons des timeouts API
+aleatoires sur les sessions clients depuis environ 09h20.
+
+Impact:
+- erreurs intermittentes difficiles a reproduire
+- parcours de consultation instable
+
+Contexte:
+- debut observe: 09h20
+- priorite: P1
+
+Merci d'investiguer une possible degradation reseau intermittente.
+
