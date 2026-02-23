@@ -15,7 +15,9 @@ TARGET_HOST="${TARGET_HOST:-}"
 REMOTE_CHAOS_DIR="${REMOTE_CHAOS_DIR:-/opt/chaos-lab}"
 
 ACTION="${1:-run}"
-ARG="${2:-}"
+if [[ $# -gt 0 ]]; then
+  shift
+fi
 
 SCENARIO_ID=""
 SCENARIO_NAME=""
@@ -24,11 +26,13 @@ SCENARIO_LAYER=""
 SCENARIO_DESCRIPTION=""
 USER_TICKET_TEMPLATE=""
 USER_TICKET_FILE=""
+RUN_REQUESTED_ID=""
+RUN_REQUESTED_DIFFICULTY=""
 
 usage() {
   cat <<EOF
 Usage:
-  $0 run [SCENARIO_ID]
+  $0 run [SCENARIO_ID] [--difficulty LEVEL]
   $0 list
   $0 heal [last|TICKET_ID]
   $0 heal-all
@@ -36,6 +40,7 @@ Usage:
 Examples:
   $0 run
   $0 run CH-004
+  $0 run --difficulty easy
   $0 list
   $0 heal last
   $0 heal-all
@@ -86,21 +91,92 @@ load_metadata() {
   fi
 }
 
+validate_difficulty() {
+  local difficulty="$1"
+  case "${difficulty}" in
+    easy|medium|hard)
+      ;;
+    *)
+      echo "Invalid difficulty '${difficulty}'. Allowed values: easy, medium, hard." >&2
+      exit 1
+      ;;
+  esac
+}
+
+parse_run_args() {
+  RUN_REQUESTED_ID=""
+  RUN_REQUESTED_DIFFICULTY=""
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      --difficulty|-d)
+        if [[ $# -lt 2 ]]; then
+          echo "Missing value for $1. Use easy, medium, or hard." >&2
+          exit 1
+        fi
+        RUN_REQUESTED_DIFFICULTY="$(printf '%s' "$2" | tr '[:upper:]' '[:lower:]')"
+        validate_difficulty "${RUN_REQUESTED_DIFFICULTY}"
+        shift 2
+        ;;
+      --difficulty=*|-d=*)
+        RUN_REQUESTED_DIFFICULTY="${1#*=}"
+        RUN_REQUESTED_DIFFICULTY="$(printf '%s' "${RUN_REQUESTED_DIFFICULTY}" | tr '[:upper:]' '[:lower:]')"
+        validate_difficulty "${RUN_REQUESTED_DIFFICULTY}"
+        shift
+        ;;
+      -*)
+        echo "Unknown run option: $1" >&2
+        exit 1
+        ;;
+      *)
+        if [[ -z "${RUN_REQUESTED_ID}" ]]; then
+          RUN_REQUESTED_ID="$1"
+          shift
+        else
+          echo "Unexpected argument for run: $1" >&2
+          exit 1
+        fi
+        ;;
+    esac
+  done
+}
+
 select_scenario_script() {
   local requested_id="$1"
+  local requested_difficulty="$2"
   local selected=""
+  local candidates=()
 
   collect_scenarios
   if [[ -n "${requested_id}" ]]; then
     for script in "${SCENARIO_FILES[@]}"; do
       load_metadata "${script}"
       if [[ "${SCENARIO_ID}" == "${requested_id}" ]]; then
+        if [[ -n "${requested_difficulty}" && "${SCENARIO_DIFFICULTY}" != "${requested_difficulty}" ]]; then
+          echo "Scenario '${requested_id}' is '${SCENARIO_DIFFICULTY}', not '${requested_difficulty}'." >&2
+          exit 1
+        fi
         selected="${script}"
         break
       fi
     done
   else
-    selected="${SCENARIO_FILES[$((RANDOM % ${#SCENARIO_FILES[@]}))]}"
+    if [[ -n "${requested_difficulty}" ]]; then
+      for script in "${SCENARIO_FILES[@]}"; do
+        load_metadata "${script}"
+        if [[ "${SCENARIO_DIFFICULTY}" == "${requested_difficulty}" ]]; then
+          candidates+=( "${script}" )
+        fi
+      done
+
+      if [[ "${#candidates[@]}" -eq 0 ]]; then
+        echo "No scenario found with difficulty '${requested_difficulty}'." >&2
+        exit 1
+      fi
+      selected="${candidates[$((RANDOM % ${#candidates[@]}))]}"
+    else
+      selected="${SCENARIO_FILES[$((RANDOM % ${#SCENARIO_FILES[@]}))]}"
+    fi
   fi
 
   if [[ -z "${selected}" ]]; then
@@ -286,11 +362,12 @@ archive_ticket_file() {
 
 run_action() {
   local requested_id="$1"
+  local requested_difficulty="$2"
   local scenario_script
   local scenario_file
   local ticket_id
 
-  scenario_script="$(select_scenario_script "${requested_id}")"
+  scenario_script="$(select_scenario_script "${requested_id}" "${requested_difficulty}")"
   scenario_file="$(basename "${scenario_script}")"
   load_metadata "${scenario_script}"
 
@@ -414,9 +491,12 @@ heal_all_action() {
 }
 
 case "${ACTION}" in
-  run) run_action "${ARG}" ;;
+  run)
+    parse_run_args "$@"
+    run_action "${RUN_REQUESTED_ID}" "${RUN_REQUESTED_DIFFICULTY}"
+    ;;
   list) list_action ;;
-  heal) heal_action "${ARG:-last}" ;;
+  heal) heal_action "${1:-last}" ;;
   heal-all) heal_all_action ;;
   -h|--help|help) usage ;;
   *)

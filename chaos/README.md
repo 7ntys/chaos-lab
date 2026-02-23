@@ -11,6 +11,19 @@ Each scenario script supports:
 The launcher (`infra/hetzner/run_chaos.sh`) picks one scenario at random and runs it over SSH on your VM.
 It also prints a user-facing incident ticket based on `tickets/CH-xxx.txt`.
 
+You can constrain random selection by level:
+
+```bash
+make chaos easy
+# or
+make chaos medium
+# or
+make chaos hard
+
+# direct script
+infra/hetzner/run_chaos.sh run --difficulty easy
+```
+
 ## Available layers
 
 - app

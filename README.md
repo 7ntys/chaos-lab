@@ -97,10 +97,32 @@ Inject a random incident:
 make chaos
 ```
 
+Inject a random incident for one difficulty only:
+
+```bash
+make chaos easy
+# or
+make chaos medium
+# or
+make chaos hard
+```
+
+Legacy syntax still works:
+
+```bash
+make chaos DIFFICULTY=easy
+```
+
 Inject a specific incident:
 
 ```bash
 make chaos SCENARIO_ID=CH-004
+```
+
+You can also use the raw script flag:
+
+```bash
+infra/hetzner/run_chaos.sh run --difficulty easy
 ```
 
 Heal latest incident:
